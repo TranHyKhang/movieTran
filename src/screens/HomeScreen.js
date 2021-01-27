@@ -1,8 +1,14 @@
-import { DrawerActions } from '@react-navigation/native';
 import React from 'react'
 import { useEffect, useState } from 'react';
-import { View, FlatList, SafeAreaView, StyleSheet, Button } from 'react-native'
+import { 
+    View,
+    FlatList, 
+    SafeAreaView, 
+    StyleSheet, 
+    TouchableOpacity 
+} from 'react-native'
 import {useDispatch, useSelector} from 'react-redux';
+import Entypo from 'react-native-vector-icons/Entypo'
 
 import {fetchList} from '../actions/movieAction';
 import HeaderApp from '../components/HeaderApp';
@@ -14,27 +20,19 @@ export default function HomeScreen({navigation}) {
     const dispatch = useDispatch();
     const [page, setPage] = useState(1);
 
-    const styles = StyleSheet.create({
-        container: {
-            backgroundColor: 'white',
-            flex: 1
-        },
-        body: {
-            paddingLeft: 15,
-            paddingRight: 15,
-            flex: 9
-        }
-    })
-
     useEffect(() => { 
         dispatch(fetchList(page));
     },[page])
 
-
-
     return (
         <SafeAreaView style={styles.container}>
-            <Button onPress={() => navigation.openDrawer()} title='TOK'></Button>
+            {/* <Button onPress={() => navigation.openDrawer()} title='TOK'></Button> */}
+            <TouchableOpacity 
+                onPress={() => navigation.openDrawer()}
+                style={styles.menuIcon}
+            >
+                <Entypo name="menu" size={40}/>
+            </TouchableOpacity>
             <HeaderApp/>
             <View style={styles.body}>
                 <FlatList
@@ -46,3 +44,21 @@ export default function HomeScreen({navigation}) {
         </SafeAreaView>
     )
 }
+
+const styles = StyleSheet.create({
+    container: {
+        backgroundColor: 'white',
+        flex: 1
+    },
+    body: {
+        paddingLeft: 15,
+        paddingRight: 15,
+        flex: 9
+    },
+    menuIcon: {
+        position: 'absolute',
+        left: 8,
+        top: 16,
+        flex: 1
+    }
+})

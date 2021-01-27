@@ -7,8 +7,6 @@ import {createStackNavigator} from '@react-navigation/stack'
 import AntDesign from 'react-native-vector-icons/AntDesign'
 
 import HomeStack from './HomeStack';
-import SearchScreen from './SearchScreen';
-
 
 import HomeScreen from '../screens/HomeScreen'
 import DrawerStack from './DrawerStack'
