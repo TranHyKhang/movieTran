@@ -5,7 +5,8 @@ import {
     FlatList, 
     SafeAreaView, 
     StyleSheet, 
-    TouchableOpacity 
+    TouchableOpacity ,
+    Button
 } from 'react-native'
 import {useDispatch, useSelector} from 'react-redux';
 import Entypo from 'react-native-vector-icons/Entypo'
@@ -13,20 +14,19 @@ import Entypo from 'react-native-vector-icons/Entypo'
 import {fetchList} from '../actions/movieAction';
 import HeaderApp from '../components/HeaderApp';
 import RenderMovieItem from '../components/RenderMovieItem';
+// import { Button } from 'react-native-paper';
 
 export default function HomeScreen({navigation}) {
-    console.log(navigation)
     const movies = useSelector(state => state.movieReducer.movies);
     const dispatch = useDispatch();
     const [page, setPage] = useState(1);
 
     useEffect(() => { 
         dispatch(fetchList(page));
-    },[page])
+    },[movies, page])
 
     return (
         <SafeAreaView style={styles.container}>
-            {/* <Button onPress={() => navigation.openDrawer()} title='TOK'></Button> */}
             <TouchableOpacity 
                 onPress={() => navigation.openDrawer()}
                 style={styles.menuIcon}

@@ -20,6 +20,7 @@ const {width, height} = Dimensions.get('screen');
 
 export default function DrawerContent(props) {
     const {colors} = useTheme();
+    const {navigation} = props;
 
     return (
         <View style={{flex: 1, backgroundColor: 'rgba(0,0,0, 0.9)'}}>
@@ -41,6 +42,7 @@ export default function DrawerContent(props) {
                                     icon={<AntDesign name="right" size={20} color={colors.icon}/>}
                                 />
                             }
+                            onPress={() => navigation.navigate('Home')}
                         />
                         <DrawerItem
                             label={
@@ -49,6 +51,7 @@ export default function DrawerContent(props) {
                                     icon={<AntDesign name="right" size={20} color={colors.icon}/>}
                                 />
                             }
+                            onPress={() => navigation.navigate('Favorite')}
                         />
                         <DrawerItem
                             label={
@@ -57,16 +60,16 @@ export default function DrawerContent(props) {
                                     icon={<AntDesign name="right" size={20} color={colors.icon}/>}
                                 />
                             }
+                            onPress={() => navigation.navigate('User')}
                         />
                     </Drawer.Section>
                 </View>
                 <View style={styles.footer}>
-                    {/* <MyButton title="LOG OUT" styleButton={styles.button} _handleOnPress={() => console.log('haha')}/> */}
                     <DrawerItem
                         label={
                             () => <RenderDrawerItem 
-                                title={<Text style={{fontSize: 18, fontWeight: 'bold', color: 'red'}}>Log out</Text>}
-                                icon={<Entypo name="log-out" size={25} color={'red'}/>}
+                                title={<Text style={{fontSize: 16, fontWeight: 'bold', color: 'red'}}>Log out</Text>}
+                                icon={<Entypo name="log-out" size={23} color={'red'}/>}
                             />
                         }
                     />
