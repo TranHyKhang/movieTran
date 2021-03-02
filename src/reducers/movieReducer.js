@@ -3,6 +3,7 @@ import Types from '../actions/actionTypes';
 const initialState = {
     movies: [],
     searchMovies: [],
+    movieLikedID: [],
     likeListMovie: [],
     loading: false,
     refreshing: false,
@@ -45,15 +46,17 @@ export default movieReducer = (state = initialState, action) => {
             return {
                 ...state,
                 likeListMovie: state.likeListMovie.concat(action.payload),
+                movieLikedID: state.movieLikedID.concat(action.payload.id)
             }
         case Types.UNLIKE_MOVIES:
             let arrMovie = state.likeListMovie.filter(item => item !== action.payload)
+            let arrMovieID = state.movieLikedID.filter(item => item !== action.payload.id)
             return {
                 ...state,
                 likeListMovie: arrMovie,
+                movieLikedID: arrMovieID
             }
         default:
             return state;
-        
     }
 }

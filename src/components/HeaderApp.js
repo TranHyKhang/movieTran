@@ -6,7 +6,7 @@ export default function HeaderApp() {
         container: {
             flex: 1,
             justifyContent: 'center',
-            alignItems: 'center'
+            alignItems: 'center',
         },
         appTitle: {
             fontSize: 30,

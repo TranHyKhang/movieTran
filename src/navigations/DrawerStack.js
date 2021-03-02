@@ -6,6 +6,7 @@ import { Dimensions } from 'react-native';
 import FavoritesScreen from '../screens/FavoritesScreen';
 import UserScreen from '../screens/UserScreen';
 import HomeStack from './HomeStack';
+import HomeScreen from '../screens/HomeScreen';
 
 
 const Drawer = createDrawerNavigator();
@@ -19,9 +20,11 @@ export default function DrawerStack() {
             drawerContent={props => <DrawerContent {...props}/>}
             drawerType={'slide'}
             drawerStyle={{width: width * 0.8}}
+            initialRouteName="Home"
         >
             <Drawer.Screen name="Home" component={HomeStack}/>
             <Drawer.Screen name="User" component={UserScreen}/>
+            {/* <Drawer.Screen name="HomeScreen" component={HomeScreen}/> */}
             <Drawer.Screen name="Favorite" component={FavoritesScreen}/>
         </Drawer.Navigator>
     )
